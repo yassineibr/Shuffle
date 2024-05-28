@@ -41,7 +41,7 @@ jobs:
       run: mkdir shuffle-database && chmod -R 777 shuffle-database
 
     - name: Build the stack
-      run: podman-compose up -f podman-compose -d
+      run: podman-compose up -f podman-compose.yml -d
 
     - name: Wait for 30 seconds
       run: sleep 30
