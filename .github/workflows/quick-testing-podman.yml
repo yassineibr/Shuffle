@@ -5,12 +5,12 @@ on:
   push:
     branches:
       - main
-      - feat/podman
-    paths:
-      - "**"
-      - "!.github/**"
-      - "!**.md"
-      - "!docker-compose.yml"
+      - feat/podman-action
+    #paths:
+      #- "**"
+      #- "!.github/**"
+      #- "!**.md"
+      # - "!docker-compose.yml"
 
 jobs:
   build:
