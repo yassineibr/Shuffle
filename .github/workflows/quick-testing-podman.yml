@@ -17,8 +17,8 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-latest]
-        architecture: [x64, arm64]
+        os: [ubuntu-24.04]
+        architecture: [x64]
 
     steps:
     - name: Checkout code
