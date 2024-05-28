@@ -29,13 +29,13 @@ jobs:
 
     - name: Setup Podman
       run: |
-        apt-get update
-        apt-get -y install podman podman-compose podman-docker
+        sudo apt-get update
+        sudo apt-get -y install podman podman-compose podman-docker
 
     - name: Pull Images
       run: |
-        podman-compose -f podman-compose.yml pull
-        podman pull ghcr.io/shuffle/shuffle-worker:latest
+        sudo podman-compose -f podman-compose.yml pull
+        sudo podman pull ghcr.io/shuffle/shuffle-worker:latest
     
     - name: Set up opensearch directory
       run: mkdir shuffle-database && chmod -R 777 shuffle-database
@@ -100,12 +100,12 @@ jobs:
           echo "Received status code $STATUS_CODE. Retrying in $RETRY_INTERVAL seconds... ($i/$MAX_RETRIES)"
           echo "Fetching last 30 lines of logs from container $CONTAINER_NAME..."
 
-          logs_output=$(podman logs --tail 30 "$CONTAINER_NAME")
+          logs_output=$(sudo podman logs --tail 30 "$CONTAINER_NAME")
           echo "$logs_output"
 
           echo "Fetching last 30 lines of logs from container shuffle-opensearch..."
 
-          opensearch_logs=$(podman logs --tail 30 shuffle-opensearch)
+          opensearch_logs=$(sudo podman logs --tail 30 shuffle-opensearch)
           echo "$opensearch_logs"
 
           sleep $RETRY_INTERVAL
